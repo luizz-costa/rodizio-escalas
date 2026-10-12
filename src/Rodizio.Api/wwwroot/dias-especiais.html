@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dias especiais | Gestão de Escalas</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main class="conteudo">
+    <h1>Dias especiais</h1>
+    <p class="aviso" id="aviso" hidden></p>
+
+    <section class="painel">
+      <h2>Adicionar feriado</h2>
+      <p class="apoio">A organização define quais feriados valem para a escala. Cada data cadastrada aqui entra na <span class="fila fins-de-semana">fila de fins de semana e feriados</span>, como sábados e domingos.</p>
+      <form id="formulario" class="formulario" novalidate>
+        <div class="campo">
+          <label for="data">Data</label>
+          <input id="data" type="date">
+          <span class="erro-campo" data-erro="data"></span>
+        </div>
+        <div class="campo">
+          <label for="descricao">Descrição</label>
+          <input id="descricao" autocomplete="off" placeholder="Ex.: feriado municipal">
+          <span class="erro-campo" data-erro="descricao"></span>
+        </div>
+        <div class="acoes">
+          <button type="submit">Adicionar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="painel">
+      <h2>Cadastrados</h2>
+      <div class="rolagem">
+        <table>
+          <thead>
+            <tr><th>Data</th><th>Dia da semana</th><th>Descrição</th><th></th></tr>
+          </thead>
+          <tbody id="linhas"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dias-especiais.js"></script>
+</body>
+</html>

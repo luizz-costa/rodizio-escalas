@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Montar escala | Gestão de Escalas</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main class="conteudo">
+    <h1>Montar escala</h1>
+    <p class="aviso" id="aviso" hidden></p>
+    <p class="aviso alerta" id="aviso-data" hidden></p>
+
+    <div class="barra-data">
+      <button type="button" class="secundario" id="anterior">Dia anterior</button>
+      <input type="date" id="data" aria-label="Data da escala">
+      <button type="button" class="secundario" id="proximo">Próximo dia</button>
+      <span class="titulo-data" id="titulo-data"></span>
+    </div>
+
+    <div class="abas" id="abas" role="tablist" aria-label="Escalas"></div>
+
+    <div class="duas-colunas">
+      <section class="painel">
+        <h2>Lista de prioridade</h2>
+        <p class="apoio">Primeiro quem está há mais tempo sem serviço nesta fila. Em empate, a antiguidade.</p>
+        <div class="rolagem">
+          <table>
+            <thead>
+              <tr>
+                <th>Pos.</th><th>Funcionário</th><th>Cargo</th>
+                <th class="numero">Dias sem serviço</th><th>Último na fila</th>
+                <th class="numero">Antig.</th><th>Situação</th><th></th>
+              </tr>
+            </thead>
+            <tbody id="linhas"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="painel">
+        <h2>Escalados (<span id="contagem">0</span>)</h2>
+        <ul class="lista-escalados" id="escalados"></ul>
+      </section>
+    </div>
+
+    <dialog id="dialogo-troca">
+      <form method="dialog">
+        <h2>Trocar escalado</h2>
+        <p class="apoio">Quem cumpre o serviço no lugar de <strong id="nome-troca"></strong>? A lista segue a ordem de prioridade.</p>
+        <select id="substituto"></select>
+        <div class="acoes">
+          <button value="confirmar">Registrar troca</button>
+          <button value="voltar" class="secundario">Voltar</button>
+        </div>
+      </form>
+    </dialog>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/montar-escala.js"></script>
+</body>
+</html>

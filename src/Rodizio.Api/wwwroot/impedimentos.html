@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Impedimentos | Gestão de Escalas</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main class="conteudo">
+    <h1>Impedimentos</h1>
+    <p class="aviso" id="aviso" hidden></p>
+
+    <section class="painel">
+      <h2 id="titulo-form">Registrar impedimento</h2>
+      <form id="formulario" class="formulario" novalidate>
+        <div class="campo">
+          <label for="funcionario">Funcionário</label>
+          <select id="funcionario"></select>
+          <span class="erro-campo" data-erro="funcionarioid"></span>
+        </div>
+        <div class="campo">
+          <label for="motivo">Motivo</label>
+          <select id="motivo">
+            <option value="AtestadoMedico">Atestado médico</option>
+            <option value="ViagemAServico">Viagem a serviço</option>
+          </select>
+          <span class="erro-campo" data-erro="motivo"></span>
+        </div>
+        <div class="campo">
+          <label for="inicio">Início</label>
+          <input id="inicio" type="date">
+          <span class="erro-campo" data-erro="datainicio"></span>
+        </div>
+        <div class="campo">
+          <label for="fim">Fim (opcional)</label>
+          <input id="fim" type="date">
+          <small>Em branco: impedimento em aberto, como uma viagem sem data de volta.</small>
+          <span class="erro-campo" data-erro="datafim"></span>
+        </div>
+        <div class="acoes">
+          <button type="submit" id="salvar">Registrar</button>
+          <button type="button" class="secundario" id="cancelar-edicao" hidden>Cancelar correção</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="painel">
+      <div class="cabecalho-painel">
+        <h2>Registrados</h2>
+        <div class="filtros">
+          <div class="campo">
+            <label for="modo">Mostrar</label>
+            <select id="modo">
+              <option value="ativos">Ativos em uma data</option>
+              <option value="todos">Todos, inclusive cancelados</option>
+            </select>
+          </div>
+          <div class="campo" id="campo-data-filtro">
+            <label for="data-filtro">Data</label>
+            <input id="data-filtro" type="date">
+          </div>
+        </div>
+      </div>
+      <div class="rolagem">
+        <table>
+          <thead>
+            <tr><th>Funcionário</th><th>Escala</th><th>Motivo</th><th>Início</th><th>Fim</th><th>Situação</th><th></th></tr>
+          </thead>
+          <tbody id="linhas"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <dialog id="dialogo-encerrar">
+      <form method="dialog">
+        <h2>Encerrar impedimento</h2>
+        <p class="apoio">Último dia do impedimento de <strong id="nome-encerrar"></strong>:</p>
+        <input id="data-encerrar" type="date">
+        <p class="apoio" style="margin-top:.5rem">Se a pessoa já voltou hoje, escolha a data de ontem.</p>
+        <div class="acoes">
+          <button value="confirmar">Encerrar</button>
+          <button value="voltar" class="secundario">Voltar</button>
+        </div>
+      </form>
+    </dialog>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/impedimentos.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escala do dia | Gestão de Escalas</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main class="conteudo">
+    <h1>Escala do dia</h1>
+    <p class="aviso" id="aviso" hidden></p>
+
+    <div class="barra-data">
+      <button type="button" class="secundario" id="anterior">Dia anterior</button>
+      <input type="date" id="data" aria-label="Data">
+      <button type="button" class="secundario" id="proximo">Próximo dia</button>
+      <span class="titulo-data" id="titulo-data"></span>
+    </div>
+
+    <div id="alertas"></div>
+    <div class="cartoes" id="totais"></div>
+    <div class="quadros" id="quadros"></div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/escala-do-dia.js"></script>
+</body>
+</html>

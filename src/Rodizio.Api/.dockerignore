@@ -1,0 +1,7 @@
+# Fica fora da imagem: resultados de compilação e arquivos locais.
+bin/
+obj/
+*.user
+.vs/
+.vscode/
+.env

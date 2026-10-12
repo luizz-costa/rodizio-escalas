@@ -1,0 +1,48 @@
+services:
+  db-rodizio:
+    image: postgres:16
+    container_name: postgres-rodizio
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      # Porta no computador: DB_PORT no .env (padrão 5432). Só aceita conexões locais.
+      - "127.0.0.1:${DB_PORT:-5432}:5432"
+    volumes:
+      - rodizio_db_data:/var/lib/postgresql/data
+      # Na primeira vez (volume vazio), cria o Data Warehouse rodizio_dw.
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+      - ./db/modelo-dimensional.sql:/scripts/modelo-dimensional.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+
+  api-rodizio:
+    build: ./src/Rodizio.Api
+    image: rodizio-api
+    container_name: api-rodizio
+    restart: unless-stopped
+    depends_on:
+      db-rodizio:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=db-rodizio;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}"
+      TZ: America/Sao_Paulo
+    ports:
+      # Porta no computador: API_PORT no .env (padrão 5001). Só aceita conexões locais.
+      - "127.0.0.1:${API_PORT:-5001}:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+
+volumes:
+  rodizio_db_data:

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1060" height="830" viewBox="0 0 1060 830" xmlns="http://www.w3.org/2000/svg">
+<style>
+body{margin:0;background:#fff}
+svg{font-family:"Segoe UI",Arial,Helvetica,sans-serif}
+.t{fill:#1a202c}.q{fill:#4a5568}
+.box{fill:#fff;stroke:#2d3748;stroke-width:1.6}
+.boxp{fill:#fff;stroke:#2d3748;stroke-width:1.6;stroke-dasharray:7 5}
+.cimp{fill:#f1f5f9;stroke:#94a3b8;stroke-width:1.2}
+.cprev{fill:none;stroke:#94a3b8;stroke-width:1.2;stroke-dasharray:7 5}
+.ln{fill:none;stroke:#2d3748;stroke-width:1.6}
+.lnp{fill:none;stroke:#2d3748;stroke-width:1.6;stroke-dasharray:7 5}
+.pill{fill:#fff;stroke:#2d3748;stroke-width:1.6}
+</style><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2d3748"/></marker></defs><rect x="0" y="0" width="1060" height="830" fill="#ffffff"/>
+<text class="t" x="35" y="42" font-size="24" font-weight="700">Arquitetura da solução – Rodizio</text>
+<rect class="box" x="35" y="62" width="34" height="20" rx="4"/><text class="q" x="78" y="78" font-size="15">implementado</text>
+<rect class="boxp" x="200" y="62" width="34" height="20" rx="4"/><text class="q" x="243" y="78" font-size="15">previsto</text>
+
+<!-- containers linha 1 -->
+<rect class="cimp" x="35" y="170" width="290" height="210" rx="10"/>
+<text class="q" x="50" y="194" font-size="15" font-weight="700">Processo atual</text>
+<rect class="cimp" x="415" y="170" width="610" height="210" rx="10"/>
+<text class="q" x="430" y="194" font-size="15" font-weight="700">Sistema web</text>
+
+<!-- caixas linha 1 -->
+<rect class="box" x="50" y="225" width="260" height="140" rx="8"/>
+<text class="t" x="180" y="258" font-size="20" font-weight="700" text-anchor="middle">Planilhas eletrônicas</text>
+<text class="t" x="180" y="288" font-size="16" text-anchor="middle">controle manual</text>
+<text class="t" x="180" y="311" font-size="16" text-anchor="middle">da contagem de folgas</text>
+<text class="q" x="180" y="342" font-size="15" font-style="italic" text-anchor="middle">substituídas pelo sistema</text>
+
+<rect class="box" x="430" y="225" width="260" height="140" rx="8"/>
+<text class="t" x="560" y="258" font-size="20" font-weight="700" text-anchor="middle">Telas e API</text>
+<text class="t" x="560" y="288" font-size="16" text-anchor="middle">HTML, CSS e JavaScript</text>
+<text class="t" x="560" y="311" font-size="16" text-anchor="middle">ASP.NET Core, .NET 8</text>
+<text class="t" x="560" y="334" font-size="16" text-anchor="middle">aplica as regras da escala</text>
+
+<rect class="box" x="750" y="225" width="260" height="140" rx="8"/>
+<text class="t" x="880" y="258" font-size="20" font-weight="700" text-anchor="middle">Banco do sistema</text>
+<text class="t" x="880" y="288" font-size="16" text-anchor="middle">PostgreSQL 16 em Docker</text>
+<text class="t" x="880" y="311" font-size="16" text-anchor="middle">cadastros, serviços</text>
+<text class="t" x="880" y="334" font-size="16" text-anchor="middle">e impedimentos</text>
+
+<!-- responsável -->
+<rect class="pill" x="460" y="100" width="200" height="44" rx="22"/>
+<text class="t" x="560" y="128" font-size="16" text-anchor="middle">Responsável pela escala</text>
+<path class="ln" d="M560 144V225" marker-end="url(#a)"/>
+<text class="q" x="572" y="190" font-size="14">registra o dia a dia</text>
+
+<!-- setas linha 1 -->
+<path class="ln" d="M690 295H750" marker-end="url(#a)"/>
+
+<!-- descida -->
+<path class="ln" d="M880 365V495" marker-end="url(#a)"/>
+<text class="q" x="868" y="420" font-size="14" text-anchor="end">lê o mês fechado</text>
+
+<!-- container linha 2 -->
+<rect class="cprev" x="35" y="450" width="990" height="200" rx="10"/>
+<text class="q" x="50" y="474" font-size="15" font-weight="700">Camada analítica (prevista)</text>
+
+<rect class="boxp" x="750" y="495" width="260" height="140" rx="8"/>
+<text class="t" x="880" y="528" font-size="20" font-weight="700" text-anchor="middle">Integração (ETL)</text>
+<text class="t" x="880" y="558" font-size="16" text-anchor="middle">Python com SQL</text>
+<text class="t" x="880" y="581" font-size="16" text-anchor="middle">agendado (cron), mensal</text>
+<text class="t" x="880" y="604" font-size="16" text-anchor="middle">recalcula o mês fechado</text>
+
+<rect class="boxp" x="430" y="495" width="260" height="140" rx="8"/>
+<text class="t" x="560" y="528" font-size="20" font-weight="700" text-anchor="middle">Data Warehouse</text>
+<text class="t" x="560" y="558" font-size="16" text-anchor="middle">PostgreSQL, base separada</text>
+<text class="t" x="560" y="581" font-size="16" text-anchor="middle">esquema estrela, grão mensal</text>
+
+<rect class="boxp" x="50" y="495" width="260" height="140" rx="8"/>
+<text class="t" x="180" y="528" font-size="20" font-weight="700" text-anchor="middle">Visualização e portal</text>
+<text class="t" x="180" y="558" font-size="16" text-anchor="middle">software livre (Metabase em teste)</text>
+<text class="t" x="180" y="581" font-size="16" text-anchor="middle">painéis num portal web</text>
+<text class="t" x="180" y="604" font-size="16" text-anchor="middle">na rede local</text>
+
+<path class="lnp" d="M750 565H690" marker-end="url(#a)"/>
+<path class="lnp" d="M430 565H310" marker-end="url(#a)"/>
+<text class="q" x="370" y="553" font-size="13" text-anchor="middle">consulta</text>
+
+<!-- gestores -->
+<path class="lnp" d="M180 635V690" marker-end="url(#a)"/>
+<text class="q" x="192" y="668" font-size="14">painéis</text>
+<rect class="pill" x="40" y="690" width="280" height="44" rx="22"/>
+<text class="t" x="180" y="718" font-size="16" text-anchor="middle">Gestão e quem monta a escala</text>
+
+<text class="q" x="35" y="782" font-size="15">Hoje tudo roda num servidor Linux, com Docker; está previsto rodar num servidor local da organização.</text>
+<text class="q" x="35" y="806" font-size="15">O painel não lê o banco do sistema: lê só o Data Warehouse. O projeto usa apenas dados fictícios.</text>
+</svg>
